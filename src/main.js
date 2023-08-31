@@ -10,6 +10,10 @@ var posterClasses = document.querySelectorAll('section');
 var showMain = document.querySelector(".show-main");
 var backToMain = document.querySelector(".back-to-main");
 var mainPoster = document.querySelector(".main-poster");
+var newPosterImageUrl = document.querySelector("#poster-image-url");
+var newPosterTitle = document.querySelector("#poster-title");
+var newPosterQuote = document.querySelector("#poster-quote");
+var makePosterButton = document.querySelector(".make-poster");
 
 
 // we've provided you with some data to work with 👇
@@ -133,6 +137,11 @@ showMain.addEventListener("click", toggleCreate)
 //listens for the back to main button
 backToMain.addEventListener("click", toggleSaved)
 
+makePosterButton.addEventListener("click", function(event){
+  event.preventDefault();
+  createCustomPoster();
+});
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -154,7 +163,6 @@ function createRandomPoster() {
   currentPoster = createPoster((images[getRandomIndex(images)]), 
                               (titles[getRandomIndex(titles)]), 
                               (quotes[getRandomIndex(quotes)]));
-  // return currentPoster;
 }
 
 //displays poster on main page
@@ -163,7 +171,6 @@ function displayPoster() {
   posterContainer.innerHTML += `<img class="poster-img" src=${currentPoster.imageURL} alt=${currentPoster.title}/>
   <h1 class="poster-title">${currentPoster.title}</h1>
   <h3 class="poster-quote">${currentPoster.quote}</h3>`
-  // return posterContainer;
 }
 
 //toggles the hidden value on passed elements.
@@ -190,24 +197,29 @@ function savePosterElements() {
 
 //checks images array and adds current poster value if !included
 function saveImage() {
-  if(!images.includes(currentPoster.imageURL)) {
-    images.push(currentPoster.imageURL);
+  if(!images.includes(newPosterImageUrl.value)) {
+    images.push(newPosterImageUrl.value);
   }
 }
  //checks titles array and adds current poster value if !included
 function saveTitle() {
-  if(!titles.includes(currentPoster.title)) {
-    titles.push(currentPoster.title);
+  if(!titles.includes(newPosterTitle.value.toLowerCase())) {
+    titles.push(newPosterTitle.value);
   }
 }
 
 //checks quotes array and adds current poster value if !included
 function saveQuote() {
-  if(!quotes.includes(currentPoster.quote)) {
-    quotes.push(currentPoster.quote);
+  if(!quotes.includes(newPosterQuote.value.toLowerCase())) {
+    quotes.push(newPosterQuote.value);
   }
 }
 
 //Pass createPoster funciton with .input values in correct places
-//toggle create function
-//display poster the new poster
+
+function createCustomPoster(){
+  currentPoster = createPoster(newPosterImageUrl.value, newPosterTitle.value, newPosterQuote.value);
+  displayPoster();
+  toggleCreate();
+  savePosterElements();
+}
