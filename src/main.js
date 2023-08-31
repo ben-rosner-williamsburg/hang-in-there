@@ -7,7 +7,6 @@ var posterQuote = document.querySelector(".poster-quote");
 var posterFormButton = document.querySelector('.show-form');
 var savedPostersButton = document.querySelector('.show-saved');
 var posterClasses = document.querySelectorAll('section');
-console.log(posterClasses[0]);
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -119,18 +118,14 @@ posterContainer.addEventListener("load", createRandomPoster(images, titles, quot
 
 //Needs refactor
 posterFormButton.addEventListener("click", function() {
-  var classes = posterClasses[0].classList;
-  classes.toggle('hidden');
-  classes = posterClasses[1].classList;
-  classes.toggle('hidden');
+  posterClasses[0].classList.toggle('hidden');
+  posterClasses[1].classList.toggle('hidden');
 
 })
  //Needs refactor
 savedPostersButton.addEventListener('click', function() {
-  var classes = posterClasses[0].classList;
-  classes.toggle('hidden');
-  classes = posterClasses[2].classList;
-  classes.toggle('hidden');
+  posterClasses[0].classList.toggle('hidden');
+  posterClasses[2].classList.toggle('hidden');
 })
 
 // functions and event handlers go here 👇
