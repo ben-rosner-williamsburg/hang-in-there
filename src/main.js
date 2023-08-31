@@ -132,8 +132,14 @@ savedPostersButton.addEventListener('click', function() {
   posterClasses[2].classList.toggle('hidden');
 })
 
-showMain.addEventListener("click", displayElement(mainPoster));
-backToMain.addEventListener("click", displayElement(mainPoster));
+showMain.addEventListener("click", function() {
+  displayElement(posterClasses[0]);
+  displayElement(posterClasses[1]);
+})
+backToMain.addEventListener("click", function() {
+  displayElement(posterClasses[0]);
+  displayElement(posterClasses[2]);
+})
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
