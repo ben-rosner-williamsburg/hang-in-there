@@ -118,6 +118,7 @@ showRandomPoster.addEventListener("click", function() {
   createRandomPoster(images, titles, quotes);
   displayPoster(currentPoster);
 })
+//Does this only work because it's what we want at the start. not actually waiting on load?
 posterContainer.addEventListener("load", createRandomPoster(images, titles, quotes), displayPoster(currentPoster));
 
 posterFormButton.addEventListener("click", toggleCreate)
@@ -175,3 +176,7 @@ function toggleSaved() {
   displayElement(pages[0]);
   displayElement(pages[2]);
 }
+//Pass createPoster funciton with .input values in correct places
+//store passed values into appropriate arrays. Save values in createPoster or new function?
+//toggle create function
+//display poster the new poster
