@@ -120,26 +120,14 @@ showRandomPoster.addEventListener("click", function() {
 })
 posterContainer.addEventListener("load", createRandomPoster(images, titles, quotes), displayPoster(currentPoster));
 
-//Needs refactor
-posterFormButton.addEventListener("click", function() {
-  posterClasses[0].classList.toggle('hidden');
-  posterClasses[1].classList.toggle('hidden');
+posterFormButton.addEventListener("click", toggleCreate)
 
-})
- //Needs refactor
-savedPostersButton.addEventListener('click', function() {
-  posterClasses[0].classList.toggle('hidden');
-  posterClasses[2].classList.toggle('hidden');
-})
+savedPostersButton.addEventListener('click', toggleSaved)
 
-showMain.addEventListener("click", function() {
-  displayElement(posterClasses[0]);
-  displayElement(posterClasses[1]);
-})
-backToMain.addEventListener("click", function() {
-  displayElement(posterClasses[0]);
-  displayElement(posterClasses[2]);
-})
+showMain.addEventListener("click", toggleCreate)
+
+backToMain.addEventListener("click", toggleSaved)
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -174,4 +162,16 @@ function displayPoster(currentPoster) {
 
 function displayElement(element){
   element.classList.toggle("hidden");
+}
+
+function toggleCreate() {
+  var pages = posterClasses;
+  displayElement(pages[0]);
+  displayElement(pages[1]);
+}
+
+function toggleSaved() {
+  var pages = posterClasses;
+  displayElement(pages[0]);
+  displayElement(pages[2]);
 }
