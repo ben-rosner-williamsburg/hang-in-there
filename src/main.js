@@ -4,6 +4,9 @@ var posterContainer = document.querySelector(".poster");
 var posterImage = document.querySelector(".poster-image");
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector(".poster-quote");
+var posterFormButton = document.querySelector('.show-form');
+var savedPostersButton = document.querySelector('.show-saved');
+var posterClasses = document.querySelectorAll('section');
 var showMain = document.querySelector(".show-main");
 var backToMain = document.querySelector(".back-to-main");
 var mainPoster = document.querySelector(".main-poster");
@@ -116,6 +119,19 @@ showRandomPoster.addEventListener("click", function() {
   displayPoster(currentPoster);
 })
 posterContainer.addEventListener("load", createRandomPoster(images, titles, quotes), displayPoster(currentPoster));
+
+//Needs refactor
+posterFormButton.addEventListener("click", function() {
+  posterClasses[0].classList.toggle('hidden');
+  posterClasses[1].classList.toggle('hidden');
+
+})
+ //Needs refactor
+savedPostersButton.addEventListener('click', function() {
+  posterClasses[0].classList.toggle('hidden');
+  posterClasses[2].classList.toggle('hidden');
+})
+
 showMain.addEventListener("click", displayElement(mainPoster));
 backToMain.addEventListener("click", displayElement(mainPoster));
 // functions and event handlers go here 👇
