@@ -115,17 +115,22 @@ var currentPoster = {};
 
 // event listeners go here 👇
 showRandomPoster.addEventListener("click", function() {
-  createRandomPoster(images, titles, quotes);
-  displayPoster(currentPoster);
+  createRandomPoster();
+  displayPoster();
 })
-posterContainer.addEventListener("load", createRandomPoster(images, titles, quotes), displayPoster(currentPoster));
+//Does this only work because it's what we want at the start. not actually waiting on load?
+posterContainer.addEventListener("load", createRandomPoster(), displayPoster());
 
+//listens for the poster form button
 posterFormButton.addEventListener("click", toggleCreate)
 
+//listens for the saved posters button
 savedPostersButton.addEventListener('click', toggleSaved)
 
+//listens for the show main button
 showMain.addEventListener("click", toggleCreate)
 
+//listens for the back to main button
 backToMain.addEventListener("click", toggleSaved)
 
 // functions and event handlers go here 👇
@@ -144,34 +149,65 @@ function createPoster(imageURL, title, quote) {
 }
 
 //Takes in 3 arrays and gets and uses the random function to create a randomn poster
-function createRandomPoster(imageURL, title, quote) {
+function createRandomPoster() {
   //Should we just return the createposter call?
-  currentPoster = createPoster((imageURL[getRandomIndex(images)]), 
-                              (title[getRandomIndex(titles)]), 
-                              (quote[getRandomIndex(quotes)]));
-  return currentPoster;
+  currentPoster = createPoster((images[getRandomIndex(images)]), 
+                              (titles[getRandomIndex(titles)]), 
+                              (quotes[getRandomIndex(quotes)]));
+  // return currentPoster;
 }
 
-function displayPoster(currentPoster) {
+//displays poster on main page
+function displayPoster() {
   posterContainer.innerHTML = ""
   posterContainer.innerHTML += `<img class="poster-img" src=${currentPoster.imageURL} alt=${currentPoster.title}/>
   <h1 class="poster-title">${currentPoster.title}</h1>
   <h3 class="poster-quote">${currentPoster.quote}</h3>`
-  return posterContainer;
+  // return posterContainer;
 }
 
+//toggles the hidden value on passed elements.
 function displayElement(element){
   element.classList.toggle("hidden");
 }
 
+//Toggle main page and create poster page
 function toggleCreate() {
-  var pages = posterClasses;
-  displayElement(pages[0]);
-  displayElement(pages[1]);
+  displayElement(posterClasses[0]);
+  displayElement(posterClasses[1]);
+}
+ //Toggle main page and saved poster page
+function toggleSaved() {
+  displayElement(posterClasses[0]);
+  displayElement(posterClasses[2]);
+}
+ //saves current poster elements in arrays
+function savePosterElements() {
+  saveImage();
+  saveTitle();
+  saveQuote();
 }
 
-function toggleSaved() {
-  var pages = posterClasses;
-  displayElement(pages[0]);
-  displayElement(pages[2]);
+//checks images array and adds current poster value if !included
+function saveImage() {
+  if(!images.includes(currentPoster.imageURL)) {
+    images.push(currentPoster.imageURL);
+  }
 }
+ //checks titles array and adds current poster value if !included
+function saveTitle() {
+  if(!titles.includes(currentPoster.title)) {
+    titles.push(currentPoster.title);
+  }
+}
+
+//checks quotes array and adds current poster value if !included
+function saveQuote() {
+  if(!quotes.includes(currentPoster.quote)) {
+    quotes.push(currentPoster.quote);
+  }
+}
+
+//Pass createPoster funciton with .input values in correct places
+//toggle create function
+//display poster the new poster
