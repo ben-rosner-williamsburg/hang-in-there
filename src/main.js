@@ -4,7 +4,10 @@ var posterContainer = document.querySelector(".poster")
 var posterImage = document.querySelector(".poster-image");
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector(".poster-quote");
-
+var posterFormButton = document.querySelector('.show-form');
+var savedPostersButton = document.querySelector('.show-saved');
+var posterClasses = document.querySelectorAll('section');
+console.log(posterClasses[0]);
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -113,6 +116,22 @@ showRandomPoster.addEventListener("click", function() {
   displayPoster(currentPoster);
 })
 posterContainer.addEventListener("load", createRandomPoster(images, titles, quotes), displayPoster(currentPoster));
+
+//Needs refactor
+posterFormButton.addEventListener("click", function() {
+  var classes = posterClasses[0].classList;
+  classes.toggle('hidden');
+  classes = posterClasses[1].classList;
+  classes.toggle('hidden');
+
+})
+ //Needs refactor
+savedPostersButton.addEventListener('click', function() {
+  var classes = posterClasses[0].classList;
+  classes.toggle('hidden');
+  classes = posterClasses[2].classList;
+  classes.toggle('hidden');
+})
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
