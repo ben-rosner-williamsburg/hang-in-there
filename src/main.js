@@ -1,12 +1,16 @@
 // query selector variables go here 👇
 var showRandomPoster = document.querySelector(".show-random");
-var posterContainer = document.querySelector(".poster")
+var posterContainer = document.querySelector(".poster");
 var posterImage = document.querySelector(".poster-image");
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector(".poster-quote");
 var posterFormButton = document.querySelector('.show-form');
 var savedPostersButton = document.querySelector('.show-saved');
 var posterClasses = document.querySelectorAll('section');
+var showMain = document.querySelector(".show-main");
+var backToMain = document.querySelector(".back-to-main");
+var mainPoster = document.querySelector(".main-poster");
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -128,6 +132,8 @@ savedPostersButton.addEventListener('click', function() {
   posterClasses[2].classList.toggle('hidden');
 })
 
+showMain.addEventListener("click", displayElement(mainPoster));
+backToMain.addEventListener("click", displayElement(mainPoster));
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -158,4 +164,8 @@ function displayPoster(currentPoster) {
   <h1 class="poster-title">${currentPoster.title}</h1>
   <h3 class="poster-quote">${currentPoster.quote}</h3>`
   return posterContainer;
+}
+
+function displayElement(element){
+  element.classList.toggle("hidden");
 }
