@@ -143,7 +143,9 @@ makePosterButton.addEventListener("click", function(event){
   createCustomPoster();
 });
 
-savePosterButton.addEventListener('click', savePoster)
+savePosterButton.addEventListener('click', savePoster);
+
+savedPostersGrid.addEventListener("dblclick", deleteSavedPosters);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -239,9 +241,17 @@ function displaySavedPosters(){
     savedPostersGrid.innerHTML += `<article class="mini-poster">${savedPosters[i]}</article>`
     var miniPoster = document.querySelectorAll(".mini-poster");
     miniPoster[i].innerHTML = ""
-    miniPoster[i].innerHTML += `<img class="mini-poster-img" src=${savedPosters[i].imageURL} alt=${savedPosters[i].title}>
+    miniPoster[i].innerHTML += `<img class="mini-poster-img" src=${savedPosters[i].imageURL} alt=${savedPosters[i].title} id=${savedPosters[i].id}>
     <h2 class="mini-poster-h2">${savedPosters[i].title}</h2>
     <h4 class="mini-poster-h4">${savedPosters[i].quote}</h4>`;
   }
 }
 
+function deleteSavedPosters(event){
+  for (var i = 0; i < savedPosters.length; i++){
+    if (savedPosters[i].id === event.target.id){
+      savedPosters.splice(i, 1);
+    }
+  }
+  displaySavedPosters();
+}
