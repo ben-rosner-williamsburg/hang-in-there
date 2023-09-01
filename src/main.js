@@ -14,6 +14,7 @@ var newPosterImageUrl = document.querySelector("#poster-image-url");
 var newPosterTitle = document.querySelector("#poster-title");
 var newPosterQuote = document.querySelector("#poster-quote");
 var makePosterButton = document.querySelector(".make-poster");
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
 
 // we've provided you with some data to work with 👇
@@ -187,6 +188,7 @@ function toggleCreate() {
 function toggleSaved() {
   displayElement(posterClasses[0]);
   displayElement(posterClasses[2]);
+  displaySavedPosters();
 }
  //saves current poster elements in arrays
 function savePosterElements() {
@@ -223,3 +225,15 @@ function createCustomPoster(){
   toggleCreate();
   savePosterElements();
 }
+
+function displaySavedPosters(){
+  savedPostersGrid.innerHTML = ""
+  savedPostersGrid.innerHTML += `<article class="mini-poster">${currentPoster}</article>`
+  // var miniPoster = document.querySelector(".mini-poster");
+  // miniPoster.innerHTML = ""
+  // var placeholder = `<img class="mini-poster img" src=${currentPoster.imageURL} alt=${currentPoster.title}>
+  // <h2 class="mini-poster h2">${currentPoster.title}</h2>
+  // <h4 class="mini-poster h4">${currentPoster.quote}</h4>`;
+  // miniPoster.innerHTML += placeholder;
+}
+
