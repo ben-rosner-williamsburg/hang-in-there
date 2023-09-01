@@ -15,7 +15,7 @@ var newPosterTitle = document.querySelector("#poster-title");
 var newPosterQuote = document.querySelector("#poster-quote");
 var makePosterButton = document.querySelector(".make-poster");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
-
+var savePosterButton = document.querySelector('.save-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -143,6 +143,8 @@ makePosterButton.addEventListener("click", function(event){
   createCustomPoster();
 });
 
+savePosterButton.addEventListener('click', savePoster)
+
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -188,7 +190,6 @@ function toggleCreate() {
 function toggleSaved() {
   displayElement(posterClasses[0]);
   displayElement(posterClasses[2]);
-  displaySavedPosters();
 }
  //saves current poster elements in arrays
 function savePosterElements() {
@@ -225,15 +226,22 @@ function createCustomPoster(){
   toggleCreate();
   savePosterElements();
 }
-
+function savePoster() {
+  if(!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+    displaySavedPosters();
+    toggleSaved();
+  }
+}
 function displaySavedPosters(){
   savedPostersGrid.innerHTML = ""
-  savedPostersGrid.innerHTML += `<article class="mini-poster">${currentPoster}</article>`
-  // var miniPoster = document.querySelector(".mini-poster");
-  // miniPoster.innerHTML = ""
-  // var placeholder = `<img class="mini-poster img" src=${currentPoster.imageURL} alt=${currentPoster.title}>
-  // <h2 class="mini-poster h2">${currentPoster.title}</h2>
-  // <h4 class="mini-poster h4">${currentPoster.quote}</h4>`;
-  // miniPoster.innerHTML += placeholder;
+  for(i = 0; i < savedPosters.length; i++){
+    savedPostersGrid.innerHTML += `<article class="mini-poster">${savedPosters[i]}</article>`
+    var miniPoster = document.querySelectorAll(".mini-poster");
+    miniPoster[i].innerHTML = ""
+    miniPoster[i].innerHTML += `<img class="mini-poster-img" src=${savedPosters[i].imageURL} alt=${savedPosters[i].title}>
+    <h2 class="mini-poster-h2">${savedPosters[i].title}</h2>
+    <h4 class="mini-poster-h4">${savedPosters[i].quote}</h4>`;
+  }
 }
 
