@@ -127,21 +127,20 @@ showRandomPoster.addEventListener("click", function() {
 posterContainer.addEventListener("load", createRandomPoster(), displayPoster());
 
 //listens for the poster form button
-posterFormButton.addEventListener("click", toggleCreate)
+posterFormButton.addEventListener("click", toggleCreate);
 
 //listens for the saved posters button
-savedPostersButton.addEventListener('click', toggleSaved)
+savedPostersButton.addEventListener('click', toggleSaved);
 
 //listens for the show main button
-showMain.addEventListener("click", toggleCreate)
+showMain.addEventListener("click", toggleCreate);
 
 //listens for the back to main button
-backToMain.addEventListener("click", toggleSaved)
+backToMain.addEventListener("click", toggleSaved);
 
-makePosterButton.addEventListener("click", function(event){
-  event.preventDefault();
-  createCustomPoster();
-});
+makePosterButton.addEventListener("click", createCustomPoster);
+  // event.preventDefault();
+  // createCustomPoster();
 
 savePosterButton.addEventListener('click', savePoster);
 
@@ -222,7 +221,8 @@ function saveQuote() {
 
 //Pass createPoster funciton with .input values in correct places
 
-function createCustomPoster(){
+function createCustomPoster(event){
+  event.preventDefault();
   currentPoster = createPoster(newPosterImageUrl.value, newPosterTitle.value, newPosterQuote.value);
   displayPoster();
   toggleCreate();
@@ -249,7 +249,7 @@ function displaySavedPosters(){
 
 function deleteSavedPosters(event){
   for (var i = 0; i < savedPosters.length; i++){
-    if (savedPosters[i].id === event.target.id){
+    if (savedPosters[i].id == event.target.id){
       savedPosters.splice(i, 1);
     }
   }
