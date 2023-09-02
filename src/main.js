@@ -177,7 +177,7 @@ function displayPoster() {
 }
 
 //toggles the hidden value on passed elements.
-function displayElement(element){
+function displayElement(element) {
   element.classList.toggle("hidden");
 }
 
@@ -220,7 +220,7 @@ function saveQuote() {
 
 //Pass createPoster funciton with .input values in correct places
 
-function createCustomPoster(event){
+function createCustomPoster(event) {
   event.preventDefault();
   currentPoster = createPoster(newPosterImageUrl.value, newPosterTitle.value, newPosterQuote.value);
   displayPoster();
@@ -234,23 +234,28 @@ function savePoster() {
     toggleSaved();
   }
 }
-function displaySavedPosters(){
-  savedPostersGrid.innerHTML = ""
-  for(i = 0; i < savedPosters.length; i++){
-    savedPostersGrid.innerHTML += `<article class="mini-poster">${savedPosters[i]}</article>`
-    var miniPoster = document.querySelectorAll(".mini-poster");
-    miniPoster[i].innerHTML = ""
-    miniPoster[i].innerHTML += `<img class="mini-poster-img" src=${savedPosters[i].imageURL} alt=${savedPosters[i].title} id=${savedPosters[i].id}>
-    <h2 class="mini-poster-h2">${savedPosters[i].title}</h2>
-    <h4 class="mini-poster-h4">${savedPosters[i].quote}</h4>`;
+function displaySavedPosters() {
+  savedPostersGrid.innerHTML = "";
+  for(var i = 0; i < savedPosters.length ; i++) {
+    var miniPoster = document.createElement('article');
+    savedPostersGrid.appendChild(createMiniPoster(i, miniPoster));
   }
 }
 
-function deleteSavedPosters(event){
+function deleteSavedPosters(event) {
   for (var i = 0; i < savedPosters.length; i++){
     if (savedPosters[i].id == event.target.id){
       savedPosters.splice(i, 1);
     }
   }
   displaySavedPosters();
+}
+
+function createMiniPoster(i, miniPoster) {
+  miniPoster.classList.add('mini-poster');
+  miniPoster.innerHTML += 
+  `<img class="mini-poster-img" src=${savedPosters[i].imageURL} alt=${savedPosters[i].title} id=${savedPosters[i].id}>
+  <h2 class="mini-poster-h2">${savedPosters[i].title}</h2>
+  <h4 class="mini-poster-h4">${savedPosters[i].quote}</h4>`;
+  return miniPoster;
 }
