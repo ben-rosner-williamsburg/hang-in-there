@@ -1,46 +1,35 @@
-# Hang In There
-
-A boilerplate repo. 
-
-## Set Up
-
-1. One teammate: fork this repository
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. Add all project partners and your assigned instructor as collaborators on the repository
-
-Project spec & rubric can be found [here](https://frontend.turing.edu/projects/module-1/hang-in-there.html)
-
-To view your project:
-
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
-  
-______________________________________________________  
-# README Template  
-Before turning this project in, erase this line and everything above it and fill in the info below.  
-______________________________________________________  
-
 # Hang in There  
 
 ### Abstract:
-[//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
-
+[//]: <> This is an app that displays motivational posters. Users can create their own poster, save posters that they've created, and delete posters.
+The app can be used as a motivational tool for students, at jobs, etc.
 ### Installation Instructions:
-[//]: <> (What steps does a person have to take to get your app cloned down and running?)
+[//]: <> To access the app, go to the deployed page link [here](https://ben-rosner-williamsburg.github.io/hang-in-there/)
 
 ### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
+[//]: <> ![Hang in There](Hang_In_There.png)
 
 ### Context:
-[//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+[//]: <> We worked on this project as our Mod 1 Paired Assignment and had one week to work on it. We are in Mod 1 of the Front End Engineering program at Turing School of Software and Design.
 
 ### Contributors:
-[//]: <> (Who worked on this application? Link to their GitHubs.)
+[//]: <> [Ben Rosner](https://github.com/ben-rosner-williamsburg)
+[Brendan Turner](https://github.com/BrendanTurner1)
 
 ### Learning Goals:
-[//]: <> (What were the learning goals of this project? What tech did you work with?)
+[//]: <> 
+- Build out functionality using functions that show trends toward SRP
+- Manipulate the page after it has loaded adding, removing, and updating elements on the DOM
+- Begin to understand the connection between HTML, CSS and JavaScript
+- Practice reading, understanding, and using provided code
+- Build an understanding of writing code collaboratively
+- Document changes with atomic commits & thorough code reviews
+- Communicate, troubleshoot, and plan effectively as a team
+- Ensure all team members are able to be heard and contribute throughout the project
 
 ### Wins + Challenges:
-[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
+[//]: <> 
+- Win: Figuring out the Delete Poster functionality.
+- Win: Manipulating HTML using the DOM.
+- Challenge: Figuring out event listeners.
+- Win: Figuring out the save poster functionality.

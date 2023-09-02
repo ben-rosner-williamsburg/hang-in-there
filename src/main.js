@@ -17,6 +17,7 @@ var makePosterButton = document.querySelector(".make-poster");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var savePosterButton = document.querySelector('.save-poster');
 
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -139,8 +140,6 @@ showMain.addEventListener("click", toggleCreate);
 backToMain.addEventListener("click", toggleSaved);
 
 makePosterButton.addEventListener("click", createCustomPoster);
-  // event.preventDefault();
-  // createCustomPoster();
 
 savePosterButton.addEventListener('click', savePoster);
 
