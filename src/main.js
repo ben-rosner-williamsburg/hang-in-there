@@ -17,7 +17,6 @@ var makePosterButton = document.querySelector(".make-poster");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var savePosterButton = document.querySelector(".save-poster");
 
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -135,7 +134,6 @@ savePosterButton.addEventListener("click", savePoster);
 savedPostersGrid.addEventListener("dblclick", deleteSavedPosters);
 
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -170,10 +168,12 @@ function toggleCreate() {
   displayElement(posterClasses[0]);
   displayElement(posterClasses[1]);
 }
+
 function toggleSaved() {
   displayElement(posterClasses[0]);
   displayElement(posterClasses[2]);
 }
+
 function savePosterElements() {
   saveImage();
   saveTitle();
@@ -185,6 +185,7 @@ function saveImage() {
     images.push(newPosterImageURL.value);
   }
 }
+
 function saveTitle() {
   if (!titles.includes(newPosterTitle.value.toLowerCase())) {
     titles.push(newPosterTitle.value);
@@ -196,9 +197,6 @@ function saveQuote() {
     quotes.push(newPosterQuote.value);
   }
 }
-
-
-
 
 function createCustomPoster(event) {
   var tempPoster = {}   
@@ -214,6 +212,7 @@ function createCustomPoster(event) {
     savePosterElements();
   }
 }
+
 function savePoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
@@ -221,6 +220,7 @@ function savePoster() {
     toggleSaved();
   }
 }
+
 function displaySavedPosters() {
   savedPostersGrid.innerHTML = "";
   for (var i = 0; i < savedPosters.length; i++) {
